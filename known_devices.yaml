@@ -1,0 +1,16 @@
+
+pontuss_iphone:
+  hide_if_away: false
+  icon:
+  mac:
+  name: Pontus
+  picture: /local/pontus.jpg
+  track: true
+
+johannas_iphone:
+  hide_if_away: false
+  icon:
+  mac:
+  name: Johanna
+  picture: /local/johanna.jpg
+  track: true

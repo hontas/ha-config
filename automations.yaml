@@ -1,0 +1,86 @@
+- id: '1541124393678'
+  alias: Växtbelysning på
+  trigger:
+  - at: 09:00
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: group.lights_plant
+    service: switch.turn_on
+- id: '1541124461599'
+  alias: Växtbelysning av
+  trigger:
+  - at: '23:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: group.lights_plant
+    service: switch.turn_off
+- id: '1541124563664'
+  alias: Mysbelysning på
+  trigger:
+  - at: 06:15
+    platform: time
+  - event: sunset
+    offset: -01:00
+    platform: sun
+  condition: []
+  action:
+  - data:
+      entity_id: group.lights_cozy
+    service: homeassistant.turn_on
+- id: '1541124626229'
+  alias: Mysbelysning av
+  trigger:
+  - at: 09:00
+    platform: time
+  - at: '23:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: group.lights_cozy
+    service: homeassistant.turn_off
+- id: '1541125546947'
+  alias: Skymning
+  trigger:
+  - event: sunset
+    offset: -01:00
+    platform: sun
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - switch.fonsterlampa_sovrum
+      - switch.utebelysning_slingor
+      - switch.utebelysning
+    service: homeassistant.turn_on
+- id: '1541125632471'
+  alias: Gryning
+  trigger:
+  - event: sunrise
+    offset: 01:00
+    platform: sun
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - switch.fonsterlampa_sovrum
+      - switch.utebelysning_slingor
+      - switch.utebelysning
+    service: homeassistant.turn_off
+- id: '1541125671766'
+  alias: Natt
+  trigger:
+  - at: 01:00
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - switch.fonsterlampa_sovrum
+      - switch.bokhyllsbelysning_lous_rum
+      - group.lights_cozy
+    service: homeassistant.turn_off

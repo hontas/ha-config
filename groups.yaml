@@ -1,0 +1,120 @@
+default_view:
+  view: yes
+  icon: mdi:home
+  entities:
+    - sensor.yr_symbol
+    - zone.home
+    - group.mysbelysning
+    - group.lights_cozy
+    - group.lights_plant
+    - group.lights_other
+    - group.doors
+    - updater.updater
+    - group.temperature
+    - device_tracker.pontuss_iphone
+    - device_tracker.johannas_iphone
+    - weather.smhi_home
+
+lights_cozy:
+  name: Mysbelysning
+  entities:
+    - switch.lampslinga_trappa
+    - switch.fonsterlampa_vardagsrum
+    - switch.hangande_lampa_lous_rum
+    - switch.lampslinga_lous_rum
+
+lights_plant:
+  name: Växtbelysning
+  entities:
+    - switch.vaxtbelysning_gastrum
+    - switch.vaxtbelysning_hall
+
+lights_other:
+  name: Övrig belysning
+  entities:
+    - switch.fonsterlampa_sovrum
+    - switch.utebelysning
+    - switch.utebelysning_slingor
+    - switch.bokhyllsbelysning_lous_rum
+
+doors:
+  name: Dörrar
+  control: hidden
+  entities:
+    - switch.balkongdorr
+    - switch.ytterdorr
+    
+temperature:
+  name: Temperatur
+  icon: mdi:temperature-celsius
+  entities:
+    - sensor.kitcheninside_temperature
+    - sensor.kitchenoutside_temperature
+    - sensor.upstairsinside_temperature
+    - sensor.upstairsoutside_temperature
+    
+humidity:
+  name: Luftfuktighet
+  icon: mdi:water-percent
+  entities:
+    - sensor.kitcheninside_humidity
+    - sensor.upstairsinside_humidity
+    
+Lights:
+  icon: mdi:lightbulb
+  view: yes
+  entities:
+    - group.all_switches
+    
+Speakers:
+  icon: mdi:speaker
+  view: yes
+  entities:
+    - media_player.kok
+    - media_player.playbar
+    - media_player.uppe
+
+Media:
+  icon: mdi:television
+  view: yes
+  entities:
+    - remote.living_room
+    - media_player.living_room
+    - media_player.vardagsrum
+
+Sensors:
+  view: yes
+  icon: mdi:temperature-celsius
+  entities:
+    - group.temperature
+    - group.humidity
+  
+Automations:
+  view: yes
+  icon: mdi:brightness-auto
+  entities:
+    - group.all_automations
+
+Devices:
+  view: yes
+  icon: mdi:account-multiple
+  entities:
+    - group.all_devices
+
+Scripts:
+  view: yes
+  icon: mdi:script
+  entities:
+    - group.all_scripts
+    
+router:
+  icon: mdi:router-wireless
+  entities:
+    - sensor.wireless_router_tlwr841n_bytes_received
+    - sensor.wireless_router_tlwr841n_bytes_sent
+    - sensor.wireless_router_tlwr841n_kbytesec_received
+    - sensor.wireless_router_tlwr841n_kbytesec_sent
+    - sensor.wireless_router_tlwr841n_packets_received
+    - sensor.wireless_router_tlwr841n_packets_sent
+    - sensor.wireless_router_tlwr841n_packetssec_received
+    - sensor.wireless_router_tlwr841n_packetssec_sent

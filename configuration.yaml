@@ -1,0 +1,209 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 60
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Stockholm
+  # Customization file
+  customize: !include customize.yaml
+
+# Show links to resources in log and frontend
+# introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+http:
+  api_password: !secret password
+  base_url: hontas.duckdns.org
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 127.0.0.1
+    - ::1
+    - 192.168.1.10
+  trusted_networks:
+    - 127.0.0.1
+    - ::1
+    - 192.168.1.0/24
+    - fd00::/8
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
+
+# Checks for available updates
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+  include:
+    entities:
+      - group.temperature
+      - group.humidity
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Text to speech
+tts:
+  - platform: google
+
+# iOS
+ios:
+zeroconf:
+device_tracker:
+  - platform: unifi_direct
+    host: 192.168.1.12
+    username: !secret unifiuser
+    password: !secret unifipass
+
+# Cloud
+cloud:
+
+# Apple TV
+apple_tv:
+  - host: 192.168.1.11
+    name: Apple TV
+    start_off: true
+    login_id: 00000000-3cee-e179-7427-dda4e8c64c01
+    credentials: 647099D36BCF6843:D168D0FA3FB4E12259B81AFEEFDFC588CC165EE4C470679B753CAF9F1513B703
+
+# RFXtrxXL
+rfxtrx:
+  device: /dev/ttyUSB0
+
+# Tellstick DUO
+tellstick:
+  host: core-tellstick
+  signal_repetitions: 3
+  port: [50800, 50801]
+
+sensor:
+  - platform: yr
+  - platform: tellstick
+    135: KitchenInside
+    136: KitchenOutside
+    151: UpstairsInside
+    152: UpstairsOutside
+    temperature_scale: "°C"
+  
+switch:
+  platform: rfxtrx
+  automatic_add: True
+  devices:
+    0b110000000186aa01000060:
+      name: Lampslinga trappa
+    0b11000300018e8401000060:
+      name: Fönsterlampa vardagsrum
+    0b11000700030e6c03000060:
+      name: Hängande lampa Lous rum
+    0b11000900030e0802000060:
+      name: Lampslinga Lous rum
+    0b11000c000186b401000060:
+      name: Växtbelysning gästrum
+    0b11000e000186c102000060:
+      name: Växtbelysning hall
+    0b11001300030d4001000070:
+      name: Fönsterlampa sovrum
+    0b11001703ba1b4e0e010f60:
+      name: Utebelysning
+    0b11001800030ed001010f60:
+      name: Utebelysning slingor
+    0b11001a00018e8e01000070:
+      name: Bokhyllsbelysning Lous rum
+    0b1100210173baaa10000060:
+      name: Balkongdörr
+    0b110000024fc2aa10010f50:
+      name: Ytterdörr
+
+group: !include groups.yaml
+
+automation: !include automations.yaml
+        
+script: !include scripts.yaml
+
+# zones
+zone:
+  - name: Waade
+    latitude: 59.318371
+    longitude: 18.073646
+    radius: 150
+    icon: mdi:briefcase
+
+  - name: Qliro
+    latitude: 59.3496852
+    longitude: 18.0457564
+    radius: 150
+    icon: mdi:briefcase
+    
+  - name: Avega
+    latitude: 59.3360795
+    longitude: 18.0728841
+    radius: 150
+    icon: mdi:briefcase
+
+  # This will override the default home zone
+  - name: Home
+    latitude: !secret home_latitude
+    longitude: !secret home_longitude
+    radius: 70
+    icon: mdi:account-multiple
+
+# notify
+notify:
+  - name: Pushbullet
+    platform: pushbullet
+    api_key: !secret pushbullet_api_key
+
+influxdb:
+  host: a0d7b954-influxdb
+  port: 8086
+  database: homeassistant
+  username: homeassistant
+  password: !secret password
+  max_retries: 3
+  default_measurement: state
+
+panel_iframe:
+  configurator:
+    title: Configurator
+    icon: mdi:wrench
+    url: http://hassio.local:3218
+  terminal:
+    title: Terminal
+    icon: mdi:console
+    url: http://hassio.local:7681
+  nodered:
+    title: Node-RED
+    icon: mdi:nodejs
+    url: http://hassio.local:1880
+  grafana:
+    title: Grafana
+    icon: mdi:chart-timeline
+    url: http://hassio.local:3000
+  influxdb:
+    title: InfluxDB
+    icon: mdi:chart-areaspline
+    url: http://hassio.local:8888

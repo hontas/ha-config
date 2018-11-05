@@ -1,0 +1,42 @@
+group.all_switches:
+  friendly_name: Uttag
+  hidden: false
+group.all_lights:
+  friendly_name: Lampor
+  hidden: false
+group.all_devices:
+  friendly_name: Enheter
+  hidden: false
+group.all_scripts:
+  friendly_name: Scripts
+  hidden: false
+group.all_automations:
+  friendly_name: Automations
+  hidden: false
+  
+sensor.yr_symbol:
+  friendly_name: "yr.no"
+
+sensor.kitcheninside_temperature:
+  friendly_name: Köket
+sensor.kitchenoutside_temperature:
+  friendly_name: Balkongen
+sensor.upstairsinside_temperature:
+  friendly_name: Uppe inne
+sensor.upstairsoutside_temperature:
+  friendly_name: Uppe ute
+sensor.kitcheninside_humidity:
+  friendly_name: Köket
+sensor.upstairsinside_humidity:
+  friendly_name: Uppe
+  
+media_player.nedervaningen:
+  icon: mdi:google-home
+  friendly_name: Google Home mini
+remote.living_room:
+  friendly_name: Apple TV remote
+media_player.living_room:
+  icon: mdi:television-classic
+media_player.vardagsrum:
+  icon: mdi:google-chrome
+  friendly_name: Chromecast
