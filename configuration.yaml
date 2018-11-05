@@ -54,8 +54,12 @@ conversation:
 history:
   include:
     entities:
-      - group.temperature
-      - group.humidity
+      - sensor.kitcheninside_temperature
+      - sensor.kitchenoutside_temperature
+      - sensor.upstairsinside_temperature
+      - sensor.upstairsoutside_temperature
+      - sensor.kitcheninside_humidity
+      - sensor.upstairsinside_humidity
 
 # View all events in a logbook
 logbook:
@@ -75,7 +79,7 @@ ios:
 zeroconf:
 device_tracker:
   - platform: unifi_direct
-    host: 192.168.1.12
+    host: !secret unifiip
     username: !secret unifiuser
     password: !secret unifipass
 
@@ -84,11 +88,11 @@ cloud:
 
 # Apple TV
 apple_tv:
-  - host: 192.168.1.11
+  - host: !secret apple_tv_ip
     name: Apple TV
     start_off: true
-    login_id: 00000000-3cee-e179-7427-dda4e8c64c01
-    credentials: 647099D36BCF6843:D168D0FA3FB4E12259B81AFEEFDFC588CC165EE4C470679B753CAF9F1513B703
+    login_id: !secret apple_tv_login
+    credentials: !secret apple_tv_cred
 
 # RFXtrxXL
 rfxtrx:
