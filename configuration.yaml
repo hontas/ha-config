@@ -116,7 +116,12 @@ sensor:
     151: UpstairsInside
     152: UpstairsOutside
     temperature_scale: "°C"
-  
+
+# Zigbee lampor
+light:
+  platform: hue
+  host: 192.168.1.30
+
 switch:
   platform: rfxtrx
   automatic_add: True
