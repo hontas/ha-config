@@ -82,6 +82,10 @@ device_tracker:
     host: !secret unifiip
     username: !secret unifiuser
     password: !secret unifipass
+  - platform: nmap_tracker
+    hosts: 192.168.1.0/24
+    exclude:
+      - 192.168.1.41
 
 # Cloud
 cloud:
