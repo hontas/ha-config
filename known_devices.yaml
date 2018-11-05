@@ -6,6 +6,14 @@ pontuss_iphone:
   name: Pontus
   picture: /local/pontus.jpg
   track: true
+  
+pontussiphone:
+  hide_if_away: false
+  icon:
+  mac: 38:53:9C:CE:F7:43
+  name: Pontuss-iPhone
+  picture:
+  track: true
 
 johannas_iphone:
   hide_if_away: false
@@ -14,3 +22,147 @@ johannas_iphone:
   name: Johanna
   picture: /local/johanna.jpg
   track: true
+
+johannasiphone:
+  hide_if_away: false
+  icon:
+  mac: 74:9E:AF:15:CC:9E
+  name: Johannas-iPhone
+  picture:
+  track: true
+
+hontas:
+  hide_if_away: false
+  icon:
+  mac: DC:A9:04:82:AF:DD
+  name: hontas
+  picture:
+  track: false
+
+a4da2220e548:
+  hide_if_away: false
+  icon:
+  mac: A4:DA:22:20:E5:48
+  name: a4da2220e548
+  picture:
+  track: false
+
+raspberrypiz:
+  hide_if_away: false
+  icon:
+  mac: B8:27:EB:5E:6C:31
+  name: raspberrypiz
+  picture:
+  track: false
+
+hassio:
+  hide_if_away: false
+  icon:
+  mac: B8:27:EB:CD:7E:C6
+  name: hassio
+  picture:
+  track: false
+
+raspberrypi:
+  hide_if_away: false
+  icon:
+  mac: B8:27:EB:D5:4F:50
+  name: raspberrypi
+  picture:
+  track: false
+
+sonoszp:
+  hide_if_away: false
+  icon:
+  mac: 5C:AA:FD:49:64:42
+  name: SonosZP
+  picture:
+  track: false
+
+sonoszp_2:
+  hide_if_away: false
+  icon:
+  mac: 5C:AA:FD:48:49:DC
+  name: SonosZP
+  picture:
+  track: false
+
+5caafd1a187d:
+  hide_if_away: false
+  icon:
+  mac: 5C:AA:FD:1A:18:7D
+  name: 5caafd1a187d
+  picture:
+  track: false
+
+a4da2220e5e7:
+  hide_if_away: false
+  icon:
+  mac: A4:DA:22:20:E5:E7
+  name: a4da2220e5e7
+  picture:
+  track: false
+
+chromecast:
+  hide_if_away: false
+  icon:
+  mac: 54:60:09:B7:38:00
+  name: Chromecast
+  picture:
+  track: false
+
+gateway:
+  hide_if_away: false
+  icon:
+  mac: B8:27:EB:AD:F4:DD
+  name: gateway
+  picture:
+  track: false
+
+googlehomemini:
+  hide_if_away: false
+  icon:
+  mac: 38:8B:59:18:85:49
+  name: Google-Home-Mini
+  picture:
+  track: false
+
+f0d1a90b82fc:
+  hide_if_away: false
+  icon:
+  mac: F0:D1:A9:0B:82:FC
+  name: f0d1a90b82fc
+  picture:
+  track: false
+
+30b5c2c6f4c2:
+  hide_if_away: false
+  icon:
+  mac: 30:B5:C2:C6:F4:C2
+  name: 30b5c2c6f4c2
+  picture:
+  track: false
+
+f09fc2a90401:
+  hide_if_away: false
+  icon:
+  mac: F0:9F:C2:A9:04:01
+  name: f09fc2a90401
+  picture:
+  track: false
+
+b827eb801a05:
+  hide_if_away: false
+  icon:
+  mac: B8:27:EB:80:1A:05
+  name: b827eb801a05
+  picture:
+  track: false
+
+d0d2b089bc97:
+  hide_if_away: false
+  icon:
+  mac: D0:D2:B0:89:BC:97
+  name: d0d2b089bc97
+  picture:
+  track: false
