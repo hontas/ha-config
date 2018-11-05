@@ -74,6 +74,10 @@ sun:
 tts:
   - platform: google
 
+# media player
+media_player:
+  - platform: plex
+
 # iOS
 ios:
 zeroconf:
