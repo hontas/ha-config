@@ -2,33 +2,17 @@
 pontuss_iphone:
   hide_if_away: false
   icon:
-  mac:
+  mac: 38:53:9C:CE:F7:43
   name: Pontus
   picture: /local/pontus.jpg
-  track: true
-  
-pontussiphone:
-  hide_if_away: false
-  icon:
-  mac: 38:53:9C:CE:F7:43
-  name: Pontuss-iPhone
-  picture:
   track: true
 
 johannas_iphone:
   hide_if_away: false
   icon:
-  mac:
+  mac: 74:9E:AF:15:CC:9E
   name: Johanna
   picture: /local/johanna.jpg
-  track: true
-
-johannasiphone:
-  hide_if_away: false
-  icon:
-  mac: 74:9E:AF:15:CC:9E
-  name: Johannas-iPhone
-  picture:
   track: true
 
 hontas:
