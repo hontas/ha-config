@@ -120,11 +120,24 @@ sensor:
     151: UpstairsInside
     152: UpstairsOutside
     temperature_scale: "°C"
-
-# Zigbee lampor
-light:
-  platform: hue
-  host: 192.168.1.30
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: disk_free
+        arg: /
+      - type: memory_use_percent
+      - type: memory_free
+      - type: swap_use_percent
+      - type: swap_free
+      - type: processor_use
+      - type: load_1m
+      - type: load_5m
+      - type: network_in
+        arg: wlan0
+      - type: network_out
+        arg: wlan0
+      - type: since_last_boot
 
 switch:
   platform: rfxtrx
@@ -146,7 +159,7 @@ switch:
       name: Fönsterlampa sovrum
     0b11001703ba1b4e0e010f60:
       name: Utebelysning
-    0b11001800030ed001010f60:
+    0a14114f0004e401010050:
       name: Utebelysning slingor
     0b11001a00018e8e01000070:
       name: Bokhyllsbelysning Lous rum

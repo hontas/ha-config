@@ -80,7 +80,17 @@
   action:
   - data:
       entity_id:
-      - switch.fonsterlampa_sovrum
       - switch.bokhyllsbelysning_lous_rum
       - group.lights_cozy
+    service: homeassistant.turn_off
+- id: '1543099939245'
+  alias: Kvällssläckning
+  trigger:
+  - at: '23:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - switch.fonsterlampa_sovrum
     service: homeassistant.turn_off
