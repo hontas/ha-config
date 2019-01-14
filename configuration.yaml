@@ -137,7 +137,7 @@ sensor:
         arg: wlan0
       - type: network_out
         arg: wlan0
-      - type: since_last_boot
+      - type: last_boot
 
 switch:
   platform: rfxtrx
@@ -156,7 +156,7 @@ switch:
     0b11000e000186c102000060:
       name: Växtbelysning hall
     0b11001300030d4001000070:
-      name: Fönsterlampa sovrum
+      name: Växtbelysning uppe
     0b11001703ba1b4e0e010f60:
       name: Utebelysning
     0a14114f0004e401010050:

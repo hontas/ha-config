@@ -44,7 +44,6 @@ media_player.vardagsrum:
 light.tradfri_lights:
   hidden: true
 
-
 sensor.processor_use:
   friendly_name: processor
 sensor.disk_use_percent_:

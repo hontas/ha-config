@@ -214,3 +214,43 @@ mysiphone:
   name: Mys-iPhone
   picture:
   track: true
+
+gustavsne6splus:
+  hide_if_away: false
+  icon:
+  mac: 38:53:9C:13:ED:BF
+  name: Gustavsne6sPlus
+  picture:
+  track: true
+
+gustavsplewatch:
+  hide_if_away: false
+  icon:
+  mac: B8:41:A4:16:63:88
+  name: GustavspleWatch
+  picture:
+  track: true
+
+a4da222c1f02:
+  hide_if_away: false
+  icon:
+  mac: A4:DA:22:2C:1F:02
+  name: a4da222c1f02
+  picture:
+  track: true
+
+remarkable:
+  hide_if_away: false
+  icon:
+  mac: 6C:21:A2:21:87:63
+  name: remarkable
+  picture:
+  track: true
+
+pontussmbp_2:
+  hide_if_away: false
+  icon:
+  mac: F0:18:98:78:85:8F
+  name: Pontuss-MBP
+  picture:
+  track: true

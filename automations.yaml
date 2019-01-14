@@ -19,24 +19,31 @@
       entity_id: group.lights_plant
     service: switch.turn_off
 - id: '1541124563664'
-  alias: Mysbelysning på
+  alias: Mysbelysning på vardagar
   trigger:
   - at: 06:15
     platform: time
   - event: sunset
     offset: -01:00
     platform: sun
-  condition: []
+  condition:
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
   action:
   - data:
-      entity_id: group.lights_cozy
+      entity_id:
+      - group.lights_cozy
+      - switch.lampslinga_lous_rum
     service: homeassistant.turn_on
 - id: '1541124626229'
-  alias: Mysbelysning av
+  alias: Mysbelysning av morgon
   trigger:
   - at: 09:00
-    platform: time
-  - at: '23:00'
     platform: time
   condition: []
   action:
@@ -83,8 +90,8 @@
       - switch.bokhyllsbelysning_lous_rum
       - group.lights_cozy
     service: homeassistant.turn_off
-- id: '1543099939245'
-  alias: Kvällssläckning
+- id: '1543184383447'
+  alias: Mysbelysning av kväll
   trigger:
   - at: '23:00'
     platform: time
@@ -92,5 +99,24 @@
   action:
   - data:
       entity_id:
+      - switch.fonsterlampa_vardagsrum
+      - switch.hangande_lampa_lous_rum
       - switch.fonsterlampa_sovrum
     service: homeassistant.turn_off
+- id: '1547240366935'
+  alias: Mysbelysning på helg
+  trigger:
+  - event: sunrise
+    offset: -00:30
+    platform: sun
+  condition:
+  - condition: time
+    weekday:
+    - sat
+    - sun
+  action:
+  - data:
+      entity_id:
+      - group.lights_cozy
+      - switch.lampslinga_lous_rum
+    service: homeassistant.turn_on

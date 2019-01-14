@@ -8,6 +8,7 @@ default_view:
     - group.lights_cozy
     - group.lights_plant
     - group.lights_other
+    - group.lous_room
     - group.doors
     - updater.updater
     - group.temperature
@@ -18,28 +19,32 @@ default_view:
     - sensor.disk_use_percent_
     - sensor.memory_use_percent
 
+lous_room:
+  name: Lous rum
+  entities:
+    - switch.lampslinga_lous_rum
+    - switch.hangande_lampa_lous_rum
+    - switch.bokhyllsbelysning_lous_rum
+    - light.pandalampa_lous_rum
+
 lights_cozy:
   name: Mysbelysning
   entities:
     - switch.lampslinga_trappa
     - switch.fonsterlampa_vardagsrum
-    - switch.hangande_lampa_lous_rum
-    - switch.lampslinga_lous_rum
 
 lights_plant:
   name: Växtbelysning
   entities:
     - switch.vaxtbelysning_gastrum
     - switch.vaxtbelysning_hall
+    - switch.vaxtbelysning_uppe
 
 lights_other:
   name: Övrig belysning
   entities:
-    - switch.fonsterlampa_sovrum
     - switch.utebelysning
     - switch.utebelysning_slingor
-    - switch.bokhyllsbelysning_lous_rum
-    - light.pandalampa_lous_rum
     - light.tradfri_mancave
 
 doors:
@@ -48,7 +53,7 @@ doors:
   entities:
     - switch.balkongdorr
     - switch.ytterdorr
-    
+
 temperature:
   name: Temperatur
   icon: mdi:temperature-celsius
@@ -57,7 +62,7 @@ temperature:
     - sensor.kitchenoutside_temperature
     - sensor.upstairsinside_temperature
     - sensor.upstairsoutside_temperature
-    
+
 humidity:
   name: Luftfuktighet
   icon: mdi:water-percent
@@ -71,7 +76,7 @@ Lights:
   entities:
     - group.all_switches
     - group.all_lights
-    
+
 Speakers:
   icon: mdi:speaker
   view: yes
