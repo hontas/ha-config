@@ -1,0 +1,13 @@
+secrets.yaml
+.HA_VERSION
+.ios.conf
+.storage
+.uuid
+airsonos.xml
+aircast.xml
+home-assistant*
+ip_bans.yaml
+node-red
+www
+known_devices.yaml
+id_rsa
