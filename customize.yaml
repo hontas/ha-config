@@ -1,0 +1,59 @@
+group.all_switches:
+  friendly_name: Uttag
+  hidden: false
+group.all_lights:
+  friendly_name: Lampor
+  hidden: false
+group.all_devices:
+  friendly_name: Enheter
+  hidden: false
+group.all_scripts:
+  friendly_name: Scripts
+  hidden: false
+group.all_automations:
+  friendly_name: Automations
+  hidden: false
+  
+sensor.yr_symbol:
+  friendly_name: "yr.no"
+
+sensor.151_humidity:
+  friendly_name: Köket luftfuktighet
+sensor.151_temperature:
+  friendly_name: Köket temp
+sensor.152_temperature:
+  friendly_name: Balkongen temp
+  
+media_player.nedervaningen:
+  icon: mdi:google-home
+  friendly_name: Google Home mini
+remote.living_room:
+  friendly_name: Apple TV remote
+media_player.living_room:
+  icon: mdi:television-classic
+media_player.vardagsrum:
+  icon: mdi:google-chrome
+  friendly_name: Chromecast
+
+light.group_1:
+  hidden: true
+light.e27_rgb_1:
+  friendly_name: pandalampa
+light.e14_1:
+  friendly_name: julstjärna
+
+sensor.processor_use:
+  friendly_name: processor
+sensor.disk_use_percent:
+  friendly_name: disk
+sensor.memory_use_percent:
+  friendly_name: memory
+sensor.load_1m:
+  unit_of_measurement: UnitInterval  
+sensor.load_5m:
+  unit_of_measurement: UnitInterval
+
+switch.telldus_uttag_2:
+  friendly_name: Växtlampa hall
+switch.telldus_uttag_3:
+  friendly_name: Fönsterlampa sovrum

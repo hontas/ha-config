@@ -1,16 +1,133 @@
+homeassistant:
+  name: Home
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  elevation: 60
+  unit_system: metric
+  time_zone: Europe/Stockholm
+  customize: !include customize.yaml
 
-# Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
-# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-# http:
-#   base_url: example.duckdns.org:8123
+discovery:
 
 # Text to speech
 tts:
   - platform: google_translate
 
+device_tracker:
+  - platform: unifi_direct
+    host: !secret unifiip
+    username: !secret unifiuser
+    password: !secret unifipass
+
+# Apple TV
+apple_tv:
+  - host: !secret apple_tv_ip
+    name: Apple TV
+    start_off: true
+    login_id: !secret apple_tv_login
+
+# RFXtrxXL
+rfxtrx:
+  device: /dev/ttyUSB0
+
+# Tellstick DUO
+tellstick:
+  host: core-tellstick
+  signal_repetitions: 3
+  port: [50800, 50801]
+
+sensor:
+  - platform: yr
+  - platform: tellstick
+    temperature_scale: "°C"
+#    only_named:
+#      - id: 135
+#        name: KitchenInside
+#      - id: 136
+#        name: KitchenOutside
+#      - id: 151
+#        name: UpstairsInside
+#      - id: 152
+#        name: UpstairsOutside
+  - platform: systemmonitor
+    resources:
+      - type: disk_free
+        arg: /
+      - type: memory_free
+      - type: processor_use
+      - type: load_1m
+      - type: load_5m
+      - type: processor_use
+      - type: last_boot
+
+switch:
+  platform: rfxtrx
+  automatic_add: True
+  signal_repetitions: 3
+  devices:
+    0b110000000186aa01000060:
+      name: Lampslinga trappa
+    0b11000300018e8401000060:
+      name: Fönsterlampa vardagsrum
+    0b11000700030e6c03000060:
+      name: Hängande lampa Lous rum
+    0b11000900030e0802000060:
+      name: Lampslinga Lous rum
+    0b11000c000186b401000060:
+      name: Växtbelysning gästrum
+    0b11000e000186c102000060:
+      name: Fönsterlampa sovrum
+    0b11001300030d4001000070:
+      name: Växtbelysning uppe
+    0b11001703ba1b4e0e010f60:
+      name: Utebelysning
+    0a14114f0004e401010050:
+      name: Utebelysning slingor
+    0b11001a00018e8e01000070:
+      name: Bokhyllsbelysning Lous rum
+    0b1100210173baaa10000060:
+      name: Balkongdörr
+    0b110000024fc2aa10010f50:
+      name: Ytterdörr
+
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+
+# zones
+zone:
+  - name: Waade
+    latitude: 59.318371
+    longitude: 18.073646
+    radius: 150
+    icon: mdi:briefcase
+  - name: Ica
+    latitude: 59.371874
+    longitude: 18.008766
+    radius: 150
+    icon: mdi:briefcase
+  - name: Avega
+    latitude: 59.3360795
+    longitude: 18.0728841
+    radius: 150
+    icon: mdi:briefcase
+  - name: Trafikverket
+    latitude: 59.353660
+    longitude: 17.971593
+    radius: 150
+    icon: mdi:briefcase
+  # This will override the default home zone
+  - name: Home
+    latitude: !secret home_latitude
+    longitude: !secret home_longitude
+    radius: 70
+    icon: mdi:account-multiple
+
+# notify
+notify:
+  - name: Pushbullet
+    platform: pushbullet
+    api_key: !secret pushbullet_api_key

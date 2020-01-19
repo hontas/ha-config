@@ -1,1 +1,168 @@
-[]
+- id: this_is_the_automation_id
+  alias: Last person left home
+  trigger:
+  - event_data:
+      event: last_person_left_home
+    event_type: ifttt_webhook_received
+    platform: event
+  condition: []
+  action:
+  - data_template:
+      message: Last person ({{ trigger.event.data.person }}) left {{ trigger.event.data.place
+        }} at {{ trigger.event.data.leftAt }}
+    service: notify.pushbullet
+- id: '1541124393678'
+  alias: Växtbelysning på
+  trigger:
+  - at: 09:00
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: group.lights_plant
+    service: homeassistant.turn_on
+- id: '1541124461599'
+  alias: Växtbelysning av
+  trigger:
+  - at: '21:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: group.lights_plant
+    service: homeassistant.turn_off
+- id: '1541124563664'
+  alias: Mysbelysning på vardagar
+  trigger:
+  - at: '18:00'
+    platform: time
+  - event: sunset
+    offset: -01:00
+    platform: sun
+  condition:
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+  - data:
+      entity_id:
+      - group.lights_cozy
+      - group.lous_room
+      - group.bedroom
+    service: homeassistant.turn_on
+- id: '1541124626229'
+  alias: Mysbelysning av morgon
+  trigger:
+  - at: 09:00
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: group.lights_cozy
+    service: homeassistant.turn_off
+- id: '1541125546947'
+  alias: Skymning
+  trigger:
+  - event: sunset
+    offset: -01:00
+    platform: sun
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - switch.utebelysning_slingor
+      - switch.utebelysning
+    service: homeassistant.turn_on
+- id: '1541125632471'
+  alias: Gryning
+  trigger:
+  - event: sunrise
+    offset: 01:00
+    platform: sun
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - switch.utebelysning_slingor
+      - switch.utebelysning
+    service: homeassistant.turn_off
+- id: '1543184383447'
+  alias: Mysbelysning av kväll
+  trigger:
+  - at: '23:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - group.lights_cozy
+    service: homeassistant.turn_off
+- id: '1547240366935'
+  alias: Mysbelysning på helg
+  trigger:
+  - event: sunset
+    offset: -01:00
+    platform: sun
+  - at: '18:00'
+    platform: time
+  condition:
+  - condition: time
+    weekday:
+    - sat
+    - sun
+  action:
+  - data:
+      entity_id:
+      - group.lights_cozy
+      - group.lous_room
+    service: homeassistant.turn_on
+- id: '1553812844043'
+  alias: Växtbelysning av sovrum
+  trigger:
+  - at: '21:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - switch.vaxtbelysning_gastrum
+    service: switch.turn_off
+- id: '1567458571893'
+  alias: Sovrumsbelysning av kväll
+  trigger:
+  - at: '21:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entityId:
+      - switch.telldus_uttag_3
+    service: homeassistant.turn_off
+- id: '1574199594593'
+  alias: Mysbelysning på morgon
+  description: ''
+  trigger:
+  - at: 07:00
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - group.lights_cozy
+    service: homeassistant.turn_on
+- id: '1576104976869'
+  alias: Julstjärna på
+  description: ''
+  trigger:
+  - at: 09:00
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - light.rgb_1
+    service: homeassistant.turn_on
