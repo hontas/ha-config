@@ -1,24 +1,21 @@
-#default_view:
-#  view: yes
-#  icon: mdi:home
-#  entities:
-#    - sensor.yr_symbol
-#    - zone.home
-#    - group.mysbelysning
-#    - group.lights_cozy
-#    - group.lights_plant
-#    - group.lights_other
-#    - group.lous_room
-#    - group.bedroom
-#    - group.doors
-#    - updater.updater
-#    - group.temperature
-#    - device_tracker.pontuss_iphone
-#    - device_tracker.johannas_iphone
-#    - weather.smhi_home
-#    - sensor.processor_use
-#    - sensor.disk_use_percent
-#    - sensor.memory_use_percent
+default_view:
+  view: yes
+  icon: mdi:home
+  entities:
+    - sensor.yr_symbol
+    - weather.hem
+    - zone.home
+    - group.mysbelysning
+    - group.lights_cozy
+    - group.lights_plant
+    - group.lights_other
+    - group.lous_room
+    - group.bedroom
+    - group.doors
+    - updater.updater
+    - group.temperature
+    - device_tracker.pontuss_iphone
+    - device_tracker.johannas_iphone_2
 
 lous_room:
   name: Lous rum
@@ -80,8 +77,35 @@ Lights:
   icon: mdi:lightbulb
   view: yes
   entities:
-    - group.all_switches
-    - group.all_lights
+    - switch.0b11000000362c8601040f50
+    - switch.balkongdorr
+    - switch.bokhyllsbelysning_lous_rum
+    - switch.fonsterlampa_sovrum
+    - switch.fonsterlampa_vardagsrum
+    - switch.hangande_lampa_lous_rum
+    - switch.lampslinga_lous_rum
+    - switch.lampslinga_trappa
+    - switch.magnetsensor_1
+    - switch.magnetsensor_ytterdorr
+    - switch.nexa_uttag_1
+    - switch.nexa_uttag_2
+    - switch.nexa_uttag_3
+    - switch.nexa_uttag_4
+    - switch.proove_uttag_1
+    - switch.proove_uttag_2
+    - switch.proove_uttag_3
+    - switch.telldus_uttag_1
+    - switch.telldus_uttag_2
+    - switch.telldus_uttag_3
+    - switch.utebelysning
+    - switch.utebelysning_2
+    - switch.utebelysning_slingor
+    - switch.vaxtbelysning_gastrum
+    - switch.vaxtbelysning_upp
+    - light.deconz_lights
+    - light.e14_1
+    - light.e27_rgb_1
+    - light.mancav
 
 Speakers:
   icon: mdi:speaker
@@ -89,14 +113,15 @@ Speakers:
   entities:
     - media_player.kok
     - media_player.playbar
-    - media_player.uppe
+    - media_player.lous_rum
+    - media_player.nedervaningen
 
 Media:
   icon: mdi:television
   view: yes
   entities:
-    - remote.living_room
-    - media_player.living_room
+    - media_player.apple_tv
+    - remote.apple_tv
     - media_player.vardagsrum
 
 Sensors:
@@ -111,32 +136,49 @@ System_status:
   icon: mdi:gauge
   entities:
     - sensor.disk_free
-    - sensor.disk_use_percent
     - sensor.memory_free
-    - sensor.memory_use_percent
-    - sensor.swap_free
-    - sensor.swap_use_percent
-    - sensor.network_in_wlan0
-    - sensor.network_out_wlan0
     - sensor.processor_use
     - sensor.load_1m
     - sensor.load_5m
-    - sensor.since_last_boot
+    - sensor.processor_use
+    - sensor.last_boot
 
 Automations:
   view: yes
   icon: mdi:brightness-auto
   entities:
-    - group.all_automations
+    - automation.gryning
+    - automation.julstjarna_pa
+    - automation.last_person_left_home
+    - automation.mysbelysning_av_kvall
+    - automation.mysbelysning_av_morgon
+    - automation.mysbelysning_pa_helg
+    - automation.mysbelysning_pa_morgon
+    - automation.mysbelysning_pa_vardagar
+    - automation.skymning
+    - automation.sovrumsbelysning_av_kvall
+    - automation.vaxtbelysning_av
+    - automation.vaxtbelysning_av_sovrum
+    - automation.vaxtbelysning_p
 
 Devices:
   view: yes
   icon: mdi:account-multiple
   entities:
-    - group.all_devices
+    - device_tracker.johannas_iphone_2
+    - device_tracker.pontuss_iphone
+    - sensor.geocoded_location
+    - sensor.geocoded_location_2
+    - sensor.sim_1
+    - sensor.sim_1_2
+    - sensor.connection_type
+    - sensor.connection_type_2
+    - sensor.battery_level
+    - sensor.battery_level_2
+    - sensor.battery_state
+    - sensor.battery_state_2
 
 Scripts:
   view: yes
   icon: mdi:script
   entities:
-    - group.all_scripts
