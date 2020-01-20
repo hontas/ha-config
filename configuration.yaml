@@ -15,11 +15,11 @@ discovery:
 tts:
   - platform: google_translate
 
-device_tracker:
-  - platform: unifi_direct
-    host: !secret unifiip
-    username: !secret unifiuser
-    password: !secret unifipass
+#device_tracker:
+#  - platform: unifi_direct
+#    host: !secret unifiip
+#    username: !secret unifiuser
+#    password: !secret unifipass
 
 # Apple TV
 apple_tv:
