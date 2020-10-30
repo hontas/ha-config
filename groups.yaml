@@ -3,7 +3,6 @@ default_view:
   icon: mdi:home
   entities:
     - sensor.yr_symbol
-    - weather.hem
     - zone.home
     - group.mysbelysning
     - group.lights_cozy
@@ -23,7 +22,6 @@ lous_room:
     - switch.lampslinga_lous_rum
     - switch.hangande_lampa_lous_rum
     - switch.bokhyllsbelysning_lous_rum
-    - light.e27_rgb_1
     
 bedroom:
   name: Sovrum
@@ -50,6 +48,7 @@ lights_other:
     - switch.utebelysning
     - switch.utebelysning_slingor
     - light.mancave
+    - light.e27_rgb_1
 
 doors:
   name: Dörrar
@@ -63,15 +62,25 @@ temperature:
   control: hidden
   icon: mdi:temperature-celsius
   entities:
-    - sensor.151_temperature
     - sensor.152_temperature
+    - sensor.temperature_3
+    - sensor.temperature_6
 
 humidity:
   name: Luftfuktighet
   control: hidden
   icon: mdi:water-percent
   entities:
-    - sensor.151_humidity
+    - sensor.humidity_4
+    - sensor.humidity_7
+    
+pressure:
+  name: Lufttryck
+  control: hidden
+  icon: mdi:pressure
+  entities:
+    - sensor.pressure_5
+    - sensor.pressure_8
 
 Lights:
   icon: mdi:lightbulb
@@ -130,6 +139,7 @@ Sensors:
   entities:
     - group.temperature
     - group.humidity
+    - group.pressure
 
 System_status:
   view: yes

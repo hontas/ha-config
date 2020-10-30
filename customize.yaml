@@ -4,9 +4,13 @@ sensor.yr_symbol:
 sensor.151_humidity:
   friendly_name: Köket luftfuktighet
 sensor.151_temperature:
-  friendly_name: Köket temp
+  friendly_name: Köket
 sensor.152_temperature:
-  friendly_name: Balkongen temp
+  friendly_name: Balkongen
+sensor.temperature_3:
+  friendly_name: Vinden aqara
+sensor.temperature_6:
+  friendly_name: Köket aqara
   
 media_player.nedervaningen:
   icon: mdi:google-home
@@ -22,7 +26,7 @@ media_player.vardagsrum:
 light.deconz_lights:
   hidden: true
 light.e27_rgb_1:
-  friendly_name: pandalampa
+  friendly_name: Utebelysning
 light.e14_1:
   friendly_name: julstjärna
 

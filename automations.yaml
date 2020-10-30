@@ -36,8 +36,9 @@
   trigger:
   - at: '18:00'
     platform: time
+  - platform: webhook
+    webhook_id: ''
   - event: sunset
-    offset: -01:00
     platform: sun
   condition:
   - condition: time
@@ -76,6 +77,7 @@
       entity_id:
       - switch.utebelysning_slingor
       - switch.utebelysning
+      - light.e27_rgb_1
     service: homeassistant.turn_on
 - id: '1541125632471'
   alias: Gryning
@@ -88,7 +90,7 @@
   - data:
       entity_id:
       - switch.utebelysning_slingor
-      - switch.utebelysning
+      - light.e27_rgb_1
     service: homeassistant.turn_off
 - id: '1543184383447'
   alias: Mysbelysning av kväll
@@ -104,9 +106,6 @@
 - id: '1547240366935'
   alias: Mysbelysning på helg
   trigger:
-  - event: sunset
-    offset: -01:00
-    platform: sun
   - at: '18:00'
     platform: time
   condition:
