@@ -108,6 +108,8 @@
   trigger:
   - at: '18:00'
     platform: time
+  - event: sunset
+    platform: sun
   condition:
   - condition: time
     weekday:

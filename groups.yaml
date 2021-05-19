@@ -4,20 +4,24 @@ default_view:
   entities:
     - sensor.yr_symbol
     - zone.home
-    - group.mysbelysning
-    - group.lights_cozy
-    - group.lights_plant
-    - group.lights_other
-    - group.lous_room
-    - group.bedroom
-    - group.doors
     - updater.updater
     - group.temperature
+    - group.kitchen
+    - group.laundry
+    - group.guestroom
     - device_tracker.pontuss_iphone
     - device_tracker.johannas_iphone_2
+#    - group.mysbelysning
+#    - group.lights_cozy
+#    - group.lights_plant
+#    - group.lights_other
+#    - group.lous_room
+#    - group.bedroom
+#    - group.doors
 
 lous_room:
   name: Lous rum
+  control: hidden
   entities:
     - switch.lampslinga_lous_rum
     - switch.hangande_lampa_lous_rum
@@ -25,9 +29,41 @@ lous_room:
     
 bedroom:
   name: Sovrum
+  control: hidden
   entities:
     - switch.telldus_uttag_3
     - light.e14_1
+    
+kitchen:
+  name: Kök
+  control: hidden
+  entities:
+    - sensor.temperature_6
+    - binary_sensor.water_16
+    - sensor.humidity_7
+    - sensor.pressure_8
+    - sensor.aqara_temp_2_battery_level
+    - sensor.water_16_battery_level
+    
+laundry:
+  name: Tvättstuga
+  control: hidden
+  entities:
+    - sensor.temperature_13
+    - binary_sensor.water_9
+    - sensor.humidity_14
+    - sensor.pressure_15
+    - sensor.laundry_battery_level
+    - sensor.water_9_battery_level
+    
+guestroom:
+  name: Gästrum
+  control: hidden
+  entities:
+    - sensor.temperature_10
+    - sensor.humidity_11
+    - sensor.pressure_12
+    - sensor.guestroom_battery_level
 
 lights_cozy:
   name: Mysbelysning
@@ -58,13 +94,14 @@ doors:
     - switch.ytterdorr
 
 temperature:
-  name: Temperatur
+  name: Temp
   control: hidden
   icon: mdi:temperature-celsius
   entities:
-    - sensor.152_temperature
     - sensor.temperature_3
     - sensor.temperature_6
+    - sensor.temperature_10
+    - sensor.temperature_13
 
 humidity:
   name: Luftfuktighet
@@ -73,6 +110,8 @@ humidity:
   entities:
     - sensor.humidity_4
     - sensor.humidity_7
+    - sensor.humidity_11
+    - sensor.humidity_14
     
 pressure:
   name: Lufttryck
@@ -81,6 +120,8 @@ pressure:
   entities:
     - sensor.pressure_5
     - sensor.pressure_8
+    - sensor.pressure_12
+    - sensor.pressure_15
 
 Lights:
   icon: mdi:lightbulb
@@ -124,6 +165,7 @@ Speakers:
     - media_player.playbar
     - media_player.lous_rum
     - media_player.nedervaningen
+    - media_player.matsalen
 
 Media:
   icon: mdi:television
@@ -133,6 +175,14 @@ Media:
     - remote.apple_tv
     - media_player.vardagsrum
 
+Sensors_battery:
+  name: Batteristatus
+  control: hidden
+  icon: mdi:battery
+  entities:
+    - sensor.aqara_temp_1_battery_level
+    - sensor.aqara_temp_2_battery_level
+
 Sensors:
   view: yes
   icon: mdi:temperature-celsius
@@ -140,6 +190,7 @@ Sensors:
     - group.temperature
     - group.humidity
     - group.pressure
+    - group.sensors_battery
 
 System_status:
   view: yes

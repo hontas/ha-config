@@ -7,10 +7,6 @@ sensor.151_temperature:
   friendly_name: Köket
 sensor.152_temperature:
   friendly_name: Balkongen
-sensor.temperature_3:
-  friendly_name: Vinden aqara
-sensor.temperature_6:
-  friendly_name: Köket aqara
   
 media_player.nedervaningen:
   icon: mdi:google-home
