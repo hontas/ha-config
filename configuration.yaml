@@ -1,10 +1,10 @@
 homeassistant:
   name: Home
-#  latitude: !secret home_latitude
-#  longitude: !secret home_longitude
-#  elevation: 60
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  elevation: 60
   unit_system: metric
-#  time_zone: Europe/Stockholm
+  time_zone: Europe/Stockholm
   customize: !include customize.yaml
 
 default_config:
