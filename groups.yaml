@@ -1,5 +1,4 @@
 default_view:
-  view: yes
   icon: mdi:home
   entities:
     - sensor.yr_symbol
@@ -11,32 +10,9 @@ default_view:
     - group.guestroom
     - device_tracker.pontuss_iphone
     - device_tracker.johannas_iphone_2
-#    - group.mysbelysning
-#    - group.lights_cozy
-#    - group.lights_plant
-#    - group.lights_other
-#    - group.lous_room
-#    - group.bedroom
-#    - group.doors
-
-lous_room:
-  name: Lous rum
-  control: hidden
-  entities:
-    - switch.lampslinga_lous_rum
-    - switch.hangande_lampa_lous_rum
-    - switch.bokhyllsbelysning_lous_rum
-    
-bedroom:
-  name: Sovrum
-  control: hidden
-  entities:
-    - switch.telldus_uttag_3
-    - light.e14_1
     
 kitchen:
   name: Kök
-  control: hidden
   entities:
     - sensor.temperature_6
     - binary_sensor.water_16
@@ -47,7 +23,6 @@ kitchen:
     
 laundry:
   name: Tvättstuga
-  control: hidden
   entities:
     - sensor.temperature_13
     - binary_sensor.water_9
@@ -58,44 +33,14 @@ laundry:
     
 guestroom:
   name: Gästrum
-  control: hidden
   entities:
     - sensor.temperature_10
     - sensor.humidity_11
     - sensor.pressure_12
     - sensor.guestroom_battery_level
 
-lights_cozy:
-  name: Mysbelysning
-  entities:
-    - switch.lampslinga_trappa
-    - switch.fonsterlampa_vardagsrum
-
-lights_plant:
-  name: Växtbelysning
-  entities:
-    - switch.vaxtbelysning_gastrum
-    - switch.vaxtbelysning_uppe
-    - switch.telldus_uttag_2
-
-lights_other:
-  name: Övrig belysning
-  entities:
-    - switch.utebelysning
-    - switch.utebelysning_slingor
-    - light.mancave
-    - light.e27_rgb_1
-
-doors:
-  name: Dörrar
-  control: hidden
-  entities:
-    - switch.balkongdorr
-    - switch.ytterdorr
-
 temperature:
   name: Temp
-  control: hidden
   icon: mdi:temperature-celsius
   entities:
     - sensor.temperature_3
@@ -105,7 +50,6 @@ temperature:
 
 humidity:
   name: Luftfuktighet
-  control: hidden
   icon: mdi:water-percent
   entities:
     - sensor.humidity_4
@@ -115,7 +59,6 @@ humidity:
     
 pressure:
   name: Lufttryck
-  control: hidden
   icon: mdi:pressure
   entities:
     - sensor.pressure_5
@@ -125,7 +68,6 @@ pressure:
 
 Lights:
   icon: mdi:lightbulb
-  view: yes
   entities:
     - switch.0b11000000362c8601040f50
     - switch.balkongdorr
@@ -159,7 +101,6 @@ Lights:
 
 Speakers:
   icon: mdi:speaker
-  view: yes
   entities:
     - media_player.kok
     - media_player.playbar
@@ -169,7 +110,6 @@ Speakers:
 
 Media:
   icon: mdi:television
-  view: yes
   entities:
     - media_player.apple_tv
     - remote.apple_tv
@@ -177,15 +117,13 @@ Media:
 
 Sensors_battery:
   name: Batteristatus
-  control: hidden
   icon: mdi:battery
   entities:
     - sensor.aqara_temp_1_battery_level
     - sensor.aqara_temp_2_battery_level
 
 Sensors:
-  view: yes
-  icon: mdi:temperature-celsius
+  icon: mdi:radio-tower
   entities:
     - group.temperature
     - group.humidity
@@ -193,7 +131,6 @@ Sensors:
     - group.sensors_battery
 
 System_status:
-  view: yes
   icon: mdi:gauge
   entities:
     - sensor.disk_free
@@ -205,7 +142,6 @@ System_status:
     - sensor.last_boot
 
 Automations:
-  view: yes
   icon: mdi:brightness-auto
   entities:
     - automation.gryning
@@ -223,7 +159,6 @@ Automations:
     - automation.vaxtbelysning_p
 
 Devices:
-  view: yes
   icon: mdi:account-multiple
   entities:
     - device_tracker.johannas_iphone_2
@@ -238,8 +173,3 @@ Devices:
     - sensor.battery_level_2
     - sensor.battery_state
     - sensor.battery_state_2
-
-Scripts:
-  view: yes
-  icon: mdi:script
-  entities:

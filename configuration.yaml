@@ -1,15 +1,18 @@
 homeassistant:
   name: Home
-  latitude: !secret home_latitude
-  longitude: !secret home_longitude
-  elevation: 60
+#  latitude: !secret home_latitude
+#  longitude: !secret home_longitude
+#  elevation: 60
   unit_system: metric
-  time_zone: Europe/Stockholm
+#  time_zone: Europe/Stockholm
   customize: !include customize.yaml
 
 default_config:
 
 discovery:
+
+lovelace:
+  mode: yaml
 
 # Text to speech
 tts:
@@ -22,11 +25,11 @@ tts:
 #    password: !secret unifipass
 
 # Apple TV
-apple_tv:
-  - host: !secret apple_tv_ip
-    name: Apple TV
-    start_off: true
-    login_id: !secret apple_tv_login
+# apple_tv:
+#  - host: !secret apple_tv_ip
+#    name: Apple TV
+#    start_off: true
+#    login_id: !secret apple_tv_login
 
 # RFXtrxXL
 rfxtrx:
@@ -39,7 +42,6 @@ tellstick:
   port: [50800, 50801]
 
 sensor:
-  - platform: yr
   - platform: tellstick
     temperature_scale: "°C"
 #    only_named:
@@ -104,30 +106,16 @@ zone:
     longitude: 18.073646
     radius: 150
     icon: mdi:briefcase
-  - name: Ica
-    latitude: 59.371874
-    longitude: 18.008766
-    radius: 150
-    icon: mdi:briefcase
-  - name: Avega
-    latitude: 59.3360795
-    longitude: 18.0728841
-    radius: 150
-    icon: mdi:briefcase
   - name: Trafikverket
     latitude: 59.353660
     longitude: 17.971593
     radius: 150
     icon: mdi:briefcase
-  # This will override the default home zone
-  - name: Home
-    latitude: !secret home_latitude
-    longitude: !secret home_longitude
-    radius: 70
-    icon: mdi:account-multiple
 
 # notify
 notify:
   - name: Pushbullet
     platform: pushbullet
     api_key: !secret pushbullet_api_key
+    
+alert: !include alerts.yaml

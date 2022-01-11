@@ -1,0 +1,9 @@
+water_sensor_kitchen:
+  name: Vatten under diskmaskinen
+  entity_id: binary_sensor.water_16
+  state: "on"
+  repeat: 30
+  can_acknowledge: true
+  skip_first: true
+  notifiers:
+    - pushbullet

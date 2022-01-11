@@ -1,0 +1,311 @@
+views:
+  - path: default_view
+    title: Home
+    icon: mdi:home
+    panel: true
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: glance
+                show_name: false
+                title: Kök
+                icon: mdi:food
+                entities:
+                  - sensor.temperature_6
+                  - binary_sensor.water_16
+              - type: glance
+                show_name: false
+                title: Tvättstuga
+                icon: mdi:washing-machine
+                entities:
+                  - sensor.temperature_13
+                  - binary_sensor.water_9
+              - type: glance
+                show_name: false
+                title: Gästrum
+                icon: mdi:bed-empty
+                entities:
+                  - sensor.temperature_10
+          - type: horizontal-stack
+            cards:
+              - type: glance
+                title: Ytterdörr
+                show_name: false
+                entities:
+                  - binary_sensor.entredorr
+                  - lock.entredorr
+              - type: glance
+                title: Garage
+                show_name: false
+                entities:
+                  - cover.garage_door
+                tap_action:
+                  action: call-service
+                  service: cover.toggle
+                  confirmation: true
+              - type: glance
+                title: Tvättstuga
+                show_name: false
+                entities:
+                  - binary_sensor.groventre_tvattstuga
+          - type: horizontal-stack
+            cards:
+              - type: entities
+                title: People
+                icon: mdi:account-multiple
+                entities:
+                  - person.pontus
+                  - person.johanna
+              - type: entity
+                entity: sensor.electricity_price_saturnusvagen_2
+            
+
+  - path: speakers
+    icon: mdi:speaker
+    title: Speakers
+    cards:
+      - type: media-control
+        entity: media_player.kok
+      - type: media-control
+        entity: media_player.playbar
+      - type: media-control
+        entity: media_player.lous_rum
+      - type: media-control
+        entity: media_player.nedervaningen
+      - type: media-control
+        entity: media_player.matsalen
+
+  - path: media
+    title: Media
+    icon: mdi:television
+    cards:
+      - type: entities
+        entities:
+          - remote.living_room
+      - type: media-control
+        entity: media_player.living_room
+      - type: media-control
+        entity: media_player.vardagsrum
+        
+  - path: system_status
+    title: System status
+    icon: mdi:gauge
+    panel: true
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                entity: sensor.disk_free
+                min: 0
+                max: 57.8
+                severity:
+                  green: 40
+                  yellow: 20
+                  red: 0
+              - type: gauge
+                entity: sensor.memory_free
+                min: 0
+                max: 1024
+                severity:
+                  green: 500
+                  yellow: 350
+                  red: 0
+              - type: gauge
+                entity: sensor.processor_use_percent
+                name: Processor use
+                severity:
+                  green: 0
+                  yellow: 50
+                  red: 75
+          - type: horizontal-stack
+            cards:
+              - type: sensor
+                entity: sensor.load_1m
+                unit: ' '
+                graph: line
+                detail: 10
+              - type: sensor
+                entity: sensor.load_5m
+                unit: ' '
+                graph: line
+                detail: 10
+          - type: entity
+            entity: sensor.last_boot
+        
+  - path: sensor
+    title: Sensors
+    icon: mdi:leak
+    panel: true
+    cards:
+      - type: vertical-stack
+        cards:
+        - type: history-graph
+          title: Temperatur
+          icon: mdi:temperature-celsius
+          hours_to_show: 48
+          entities:
+            - sensor.temperature_3
+            - entity: sensor.temperature_6
+              name: Kitchen
+            - sensor.temperature_10
+            - sensor.temperature_13
+        - type: history-graph
+          icon: mdi:pressure
+          title: Lufttryck
+          entities:
+            - sensor.pressure_5
+            - entity: sensor.pressure_8
+              name: Kitchen
+            - sensor.pressure_12
+            - sensor.pressure_15
+        - type: history-graph
+          icon: mdi:water-percent
+          title: Luftfuktighet
+          entities:
+            - sensor.humidity_4
+            - entity: sensor.humidity_7
+              name: Kitchen
+            - sensor.humidity_11
+            - sensor.humidity_14
+        - type: glance
+          entities:
+            - entity: binary_sensor.water_9
+              name: Tvättstuga
+            - entity: binary_sensor.water_16
+              name: Kök
+        - type: horizontal-stack
+          cards:
+          - type: gauge
+            entity: sensor.guestroom_battery_level
+          - type: gauge
+            entity: sensor.aqara_temp_1_battery_level
+          - type: gauge
+            entity: sensor.laundry_battery_level
+          - type: gauge
+            entity: sensor.water_16_battery_level
+          - type: gauge
+            entity: sensor.water_9_battery_level
+        
+  - path: raw_config
+    title: Raw
+    cards:
+      - type: media-control
+        entity: media_player.kok
+      - type: media-control
+        entity: media_player.nedervaningen
+      - type: entities
+        entities:
+          - remote.living_room
+        title: Living Room
+      - type: media-control
+        entity: media_player.living_room
+      - type: entities
+        entities:
+          - light.e27_rgb_1
+        title: Lous rum
+      - type: media-control
+        entity: media_player.lous_rum
+      - type: media-control
+        entity: media_player.matsalen
+      - type: entities
+        entities:
+          - light.e14_1
+        title: Sovrum
+      - type: entities
+        entities:
+          - light.mancave
+        title: Uppe
+      - type: media-control
+        entity: media_player.playbar
+      - type: entities
+        entities:
+          - binary_sensor.entredorr
+          - binary_sensor.groventre_tvattstuga
+          - cover.garage_door
+          - binary_sensor.fonster_hall_hoger
+          - binary_sensor.fonster_hall_vanster
+          - binary_sensor.fonster_kok_1_fr_vanster
+          - binary_sensor.fonster_kok_2_fr_vanster
+          - binary_sensor.fonster_kok_3_fr_vanster
+          - binary_sensor.fonster_kok_4_fr_vanster
+          - binary_sensor.vanster_kallarfonster
+          - binary_sensor.verisure_ethernet_status
+          - binary_sensor.hub_myq_gateway
+          - binary_sensor.water_16
+          - binary_sensor.kitchen_water_sensor_tampered
+          - binary_sensor.water_9
+          - binary_sensor.laundry_water_sensor_tampered
+          - binary_sensor.tradfri_motion_sensor
+          - binary_sensor.updater
+        title: Binary sensor
+      - type: entities
+        entities:
+          - light.deconz_lights
+        title: Light
+      - type: media-control
+        entity: media_player.vardagsrum
+      - type: media-control
+        entity: media_player.apple_tv
+      - type: entities
+        entities:
+          - person.pontus
+        title: Person
+      - type: entities
+        entities:
+          - remote.apple_tv
+        title: Remote
+      - type: entities
+        entities:
+          - scene.everything_off
+        title: Scene
+      - type: entities
+        entities:
+          - sensor.temperature_6
+          - sensor.humidity_7
+          - sensor.pressure_8
+          - sensor.daylight
+          - sensor.disk_free
+          - sensor.temperature_3
+          - sensor.humidity_4
+          - sensor.pressure_5
+          - sensor.temperature_10
+          - sensor.humidity_11
+          - sensor.pressure_12
+          - sensor.kitchen_water_sensor_temperature
+          - sensor.last_boot
+          - sensor.temperature_13
+          - sensor.humidity_14
+          - sensor.pressure_15
+          - sensor.laundry_water_sensor_temperature
+          - sensor.load_1m
+          - sensor.load_5m
+          - sensor.memory_free
+          - sensor.processor_use_percent
+        title: Sensor
+      - type: entities
+        entities:
+          - sun.sun
+        title: Sun
+      - type: entities
+        entities:
+          - switch.telldus_uttag_3
+          - switch.magnetsensor_1
+          - switch.magnetsensor_ytterdorr
+          - switch.nexa_uttag_1
+          - switch.nexa_uttag_2
+          - switch.nexa_uttag_3
+          - switch.nexa_uttag_4
+          - switch.proove_uttag_1
+          - switch.proove_uttag_2
+          - switch.proove_uttag_3
+          - switch.telldus_uttag_1
+          - switch.utebelysning
+          - switch.telldus_uttag_2
+        title: Switch
+      - type: weather-forecast
+        entity: weather.hem
+        show_forecast: false
