@@ -12,7 +12,12 @@ default_config:
 discovery:
 
 lovelace:
-  mode: yaml
+
+# ShellyForHACS
+shelly:
+  version: true
+  sensors:
+    - all
 
 # Text to speech
 tts:
@@ -34,6 +39,31 @@ tts:
 # RFXtrxXL
 rfxtrx:
   device: /dev/ttyUSB0
+  devices:
+    0b110000000186aa01000060:
+#      name: Lampslinga trappa
+    0b11000300018e8401000060:
+#      name: Fönsterlampa vardagsrum
+    0b11000700030e6c03000060:
+#      name: Hängande lampa Lous rum
+    0b11000900030e0802000060:
+#      name: Lampslinga Lous rum
+    0b11000c000186b401000060:
+#      name: Växtbelysning gästrum
+    0b11000e000186c102000060:
+#      name: Fönsterlampa sovrum
+    0b11001300030d4001000070:
+#      name: Växtbelysning uppe
+    0b11001703ba1b4e0e010f60:
+#      name: Utebelysning
+    0a14114f0004e401010050:
+#      name: Utebelysning slingor
+    0b11001a00018e8e01000070:
+#      name: Bokhyllsbelysning Lous rum
+    0b1100210173baaa10000060:
+#      name: Balkongdörr
+    0b110000024fc2aa10010f50:
+#      name: Ytterdörr
 
 # Tellstick DUO
 tellstick:
@@ -58,41 +88,48 @@ sensor:
       - type: disk_free
         arg: /
       - type: memory_free
-      - type: processor_use
+#      - type: processor_use
       - type: load_1m
       - type: load_5m
       - type: processor_use
       - type: last_boot
-
-switch:
-  platform: rfxtrx
-  automatic_add: True
-  signal_repetitions: 3
-  devices:
-    0b110000000186aa01000060:
-      name: Lampslinga trappa
-    0b11000300018e8401000060:
-      name: Fönsterlampa vardagsrum
-    0b11000700030e6c03000060:
-      name: Hängande lampa Lous rum
-    0b11000900030e0802000060:
-      name: Lampslinga Lous rum
-    0b11000c000186b401000060:
-      name: Växtbelysning gästrum
-    0b11000e000186c102000060:
-      name: Fönsterlampa sovrum
-    0b11001300030d4001000070:
-      name: Växtbelysning uppe
-    0b11001703ba1b4e0e010f60:
-      name: Utebelysning
-    0a14114f0004e401010050:
-      name: Utebelysning slingor
-    0b11001a00018e8e01000070:
-      name: Bokhyllsbelysning Lous rum
-    0b1100210173baaa10000060:
-      name: Balkongdörr
-    0b110000024fc2aa10010f50:
-      name: Ytterdörr
+#  - platform: rest
+#    resource: https://api.github.com/rate_limit
+#    name: Github HACS
+#    value_template: '{{ value_json.resources.core.used }}'
+#    headers:
+#      Authorization: !secret github-access-token
+#      Accept: application/vnd.github.v3+json
+#      Content-Type: application/json
+#      User-Agent: Home Assistant REST sensor
+  - platform: template
+    sensors:
+      current_consumption_garage_radiators:
+        friendly_name: 'Current consumption garage radiators'
+        unit_of_measurement: 'W'
+        value_template: "{{ states('sensor.shelly_shplg_s_bc1996_current_consumption') | float(0) + states('sensor.shelly_shplg_s_e43e3a_current_consumption') | float(0) + states('sensor.shelly_shplg_s_ea99cc_current_consumption') | float(0) }}"
+        device_class: power
+      total_consumption_garage_radiators:
+        friendly_name: 'Total consumption garage radiators'
+        unit_of_measurement: 'kWh'
+        value_template: "{{ states('sensor.shelly_shplg_s_e43e3a_total_consumption') | float(0) + states('sensor.shelly_shplg_s_ea99cc_total_consumption') | float(0) + states('sensor.shelly_shplg_s_e43e3a_total_consumption') | float(0) }}"
+        device_class: energy
+  - platform: integration
+    source: sensor.ftx_fan_power_2
+    name: ftx_fan_total_consumption
+    unit_prefix: k
+    round: 2
+  - platform: fusion_solar_kiosk
+    kiosks:
+      - url: !secret fusion_solar_kiosk_url
+        name: "Saturnusvägen 2"
+  - platform: greenely
+    email: !secret greenely_email
+    password: !secret greenely_password
+    facility_id: !secret greenely_facility_id
+    hourly_usage: true
+    sold: true
+    sold_daily: true
 
 group: !include groups.yaml
 automation: !include automations.yaml
@@ -119,3 +156,11 @@ notify:
     api_key: !secret pushbullet_api_key
     
 alert: !include alerts.yaml
+
+
+
+
+
+
+
+

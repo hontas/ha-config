@@ -167,3 +167,190 @@
       entity_id:
       - light.rgb_1
     service: homeassistant.turn_on
+- id: '1642165706290'
+  alias: Washing machine done
+  description: Power consumption goes to 0 W
+  trigger:
+  - type: power
+    platform: device
+    device_id: 4d210c770658401562a4feb5d891e328
+    entity_id: sensor.washing_machine_power_2
+    domain: sensor
+    below: 0.1
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+  condition: []
+  action:
+  - service: notify.mobile_app_pontuss_iphone
+    data:
+      message: Tvätten är klar!
+      title: Tvättmaskinen
+  - service: notify.mobile_app_johannas_iphone
+    data:
+      title: Tvättmaskinen
+      message: Tvätten är klar!
+  mode: single
+- id: '1642357357162'
+  alias: Washing machine started
+  description: Power consumption goes to above 10 W
+  trigger:
+  - type: power
+    platform: device
+    device_id: 4d210c770658401562a4feb5d891e328
+    entity_id: sensor.washing_machine_power_2
+    domain: sensor
+    above: 3
+  condition: []
+  action:
+  - service: notify.mobile_app_pontuss_iphone
+    data:
+      message: Ny tvätt startad!
+      title: Tvättmaskinen
+  mode: single
+- id: '1642357497714'
+  alias: Dryer program complete
+  description: When dryer power goes below x W
+  trigger:
+  - type: power
+    platform: device
+    device_id: 5019d8a8f5df0a5cdb2d08b62f450136
+    entity_id: sensor.dryer_power
+    domain: sensor
+    below: 0.1
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+  condition: []
+  action:
+  - service: notify.mobile_app_pontuss_iphone
+    data:
+      title: Torktumlaren
+      message: Torkprogrammet är klart!
+  mode: single
+- id: '1642357535328'
+  alias: Dryer program started
+  description: When dryer power goes above 3 W
+  trigger:
+  - type: power
+    platform: device
+    device_id: 5019d8a8f5df0a5cdb2d08b62f450136
+    entity_id: sensor.dryer_power
+    domain: sensor
+    above: 3
+  condition: []
+  action:
+  - service: notify.mobile_app_pontuss_iphone
+    data:
+      title: Torktumlaren
+      message: Nytt torkprogram startat!
+  mode: single
+- id: '1642367789452'
+  alias: Elcykel starta laddning
+  description: ''
+  trigger:
+  - platform: time
+    at: 01:00:00
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 2ec5e112de2bceadf00a032eeaa0be94
+    entity_id: switch.shelly_shplg_s_e43d66
+    domain: switch
+  mode: single
+- id: '1642367955338'
+  alias: Elcykel avsluta laddning
+  description: ''
+  trigger:
+  - platform: time
+    at: 03:00:00
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 2ec5e112de2bceadf00a032eeaa0be94
+    entity_id: switch.shelly_shplg_s_e43d66
+    domain: switch
+  mode: single
+- id: '1642368190393'
+  alias: Elcykel avsluta laddning pga last
+  description: Stäng av om laddaren ej är inkopplad
+  trigger:
+  - platform: time
+    at: 01:01:00
+  condition:
+  - type: is_value
+    condition: device
+    device_id: 2ec5e112de2bceadf00a032eeaa0be94
+    entity_id: sensor.shelly_shplg_s_e43d66_current_consumption
+    domain: sensor
+    below: 10
+  action:
+  - type: turn_off
+    device_id: 2ec5e112de2bceadf00a032eeaa0be94
+    entity_id: switch.shelly_shplg_s_e43d66
+    domain: switch
+  mode: single
+- id: '1643416387227'
+  alias: Garage door open
+  description: öppna garage
+  trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionName: Toggle garage door
+  condition:
+  - condition: device
+    device_id: e6213f28c793436a14b04728d935d88f
+    domain: cover
+    entity_id: cover.garage_door
+    type: is_closed
+  action:
+  - device_id: e6213f28c793436a14b04728d935d88f
+    domain: cover
+    entity_id: cover.garage_door
+    type: open
+  - service: notify.mobile_app_pontuss_iphone
+    data:
+      title: Garagedörren öppnas
+  mode: single
+- id: '1643416482097'
+  alias: Garage door close
+  description: stäng garage
+  trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionName: Toggle garage door
+  condition:
+  - condition: device
+    device_id: e6213f28c793436a14b04728d935d88f
+    domain: cover
+    entity_id: cover.garage_door
+    type: is_open
+  action:
+  - device_id: e6213f28c793436a14b04728d935d88f
+    domain: cover
+    entity_id: cover.garage_door
+    type: close
+  - service: notify.mobile_app_pontuss_iphone
+    data:
+      title: Garagedörren stängs
+  mode: single
+- id: '1647976385332'
+  alias: Toggle towel dryer timer
+  description: ''
+  trigger:
+  - device_id: 6f4699287f1bdf6b6a05b28b7f656d46
+    domain: deconz
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_on
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      device_id: cce3c41b5bba14ed6bda12b2248c7c08
+  mode: single

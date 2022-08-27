@@ -2,65 +2,83 @@ views:
   - path: default_view
     title: Home
     icon: mdi:home
+    cards:
+      - type: glance
+        show_name: false
+        title: 🧑‍🍳 Kök
+        entities:
+          - sensor.temperature_6
+          - binary_sensor.water_16
+      - type: glance
+        show_name: false
+        title: 🧺 Tvättstuga
+        entities:
+          - sensor.temperature_13
+          - binary_sensor.water_9
+          - switch.freezer
+          - binary_sensor.groventre_tvattstuga
+      - type: glance
+        show_name: false
+        title: 🛏 Gästrum
+        entities:
+          - sensor.temperature_10
+      - type: glance
+        title: 🚪 Ytterdörr
+        show_name: false
+        entities:
+          - binary_sensor.entredorr
+          - lock.entredorr
+      - type: glance
+        title: 🚙 Garage
+        show_name: false
+        entities:
+          - cover.garage_door
+          - sensor.total_consumption_garage_radiators
+#                tap_action:
+#                  action: call-service
+#                  service: cover.toggle
+#                  confirmation: true
+      - type: entities
+        title: 👬 Personer
+        entities:
+          - person.pontus
+          - person.johanna
+#              - type: entity
+#                name: ⚡️ Elpris
+#                entity: sensor.electricity_price_saturnusvagen_2
+            
+
+  - path: power
+    icon: mdi:lightning-bolt
+    title: Power
     panel: true
     cards:
       - type: vertical-stack
         cards:
           - type: horizontal-stack
             cards:
-              - type: glance
-                show_name: false
-                title: Kök
-                icon: mdi:food
-                entities:
-                  - sensor.temperature_6
-                  - binary_sensor.water_16
-              - type: glance
-                show_name: false
-                title: Tvättstuga
-                icon: mdi:washing-machine
-                entities:
-                  - sensor.temperature_13
-                  - binary_sensor.water_9
-              - type: glance
-                show_name: false
-                title: Gästrum
-                icon: mdi:bed-empty
-                entities:
-                  - sensor.temperature_10
+            - type: history-graph
+              entities:
+                - sensor.freezer_power_2
+                - sensor.ftx_fan_power_2
+                - sensor.washing_machine_power_2
+                - sensor.dryer_power
           - type: horizontal-stack
             cards:
-              - type: glance
-                title: Ytterdörr
-                show_name: false
-                entities:
-                  - binary_sensor.entredorr
-                  - lock.entredorr
-              - type: glance
-                title: Garage
-                show_name: false
-                entities:
-                  - cover.garage_door
-                tap_action:
-                  action: call-service
-                  service: cover.toggle
-                  confirmation: true
-              - type: glance
-                title: Tvättstuga
-                show_name: false
-                entities:
-                  - binary_sensor.groventre_tvattstuga
+            - type: sensor
+              entity: sensor.ftx_fan_power_2
+              graph: line
+              limits:
+                min: 0
+                max: 1500
           - type: horizontal-stack
             cards:
-              - type: entities
-                title: People
-                icon: mdi:account-multiple
-                entities:
-                  - person.pontus
-                  - person.johanna
-              - type: entity
-                entity: sensor.electricity_price_saturnusvagen_2
-            
+            - type: sensor
+              entity: sensor.freezer_power_2
+              graph: line
+              limits:
+                min: 0
+                max: 1500
 
   - path: speakers
     icon: mdi:speaker
