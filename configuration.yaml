@@ -114,6 +114,12 @@ sensor:
         unit_of_measurement: 'kWh'
         value_template: "{{ states('sensor.shelly_shplg_s_e43e3a_total_consumption') | float(0) + states('sensor.shelly_shplg_s_ea99cc_total_consumption') | float(0) + states('sensor.shelly_shplg_s_e43e3a_total_consumption') | float(0) }}"
         device_class: energy
+      daily_consumption_increasing:
+        friendly_name: 'Daily consumption increasing'
+        unit_of_measurement: 'kWh'
+        value_template: "{{ states('sensor.greenely_daily_usage') | float }}"
+        device_class: power
+        state_class: total_increasing
   - platform: integration
     source: sensor.ftx_fan_power_2
     name: ftx_fan_total_consumption

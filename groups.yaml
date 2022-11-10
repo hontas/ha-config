@@ -99,6 +99,15 @@ Lights:
     - light.e27_rgb_1
     - light.mancav
 
+Cozylights:
+  icon: mdi:lightbulb-auto
+  name: Mysbelysning
+  entities:
+    - switch.nexa_uttag_1
+    - switch.nexa_uttag_3
+    - switch.telldus_uttag_1
+    - switch.telldus_uttag_3
+
 Speakers:
   icon: mdi:speaker
   entities:

@@ -19,10 +19,13 @@ media_player.vardagsrum:
   icon: mdi:google-chrome
   friendly_name: Chromecast
 
+sensor.greenely_daily_usage:
+  state_class: total_increasing
+
 light.deconz_lights:
   hidden: true
 light.e27_rgb_1:
-  friendly_name: Utebelysning
+  friendly_name: Aplampan
 light.e14_1:
   friendly_name: julstjärna
 
@@ -37,7 +40,14 @@ sensor.load_1m:
 sensor.load_5m:
   unit_of_measurement: UnitInterval
 
+
+switch.nexa_uttag_1:
+  friendly_name: Fönsterlampa barnrum
+switch.nexa_uttag_3:
+  friendly_name: Fönsterlampa kök
+switch.telldus_uttag_1:
+  friendly_name: Lampslinga TV
 switch.telldus_uttag_2:
   friendly_name: Växtlampa hall
 switch.telldus_uttag_3:
-  friendly_name: Fönsterlampa sovrum
+  friendly_name: Golvlampa garnhörnan
