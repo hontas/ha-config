@@ -106,6 +106,7 @@ Cozylights:
     - switch.nexa_uttag_1
     - switch.nexa_uttag_3
     - switch.telldus_uttag_1
+    - switch.telldus_uttag_2
     - switch.telldus_uttag_3
 
 Speakers:

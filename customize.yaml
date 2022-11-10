@@ -48,6 +48,6 @@ switch.nexa_uttag_3:
 switch.telldus_uttag_1:
   friendly_name: Lampslinga TV
 switch.telldus_uttag_2:
-  friendly_name: Växtlampa hall
+  friendly_name: Aplampa
 switch.telldus_uttag_3:
   friendly_name: Golvlampa garnhörnan
