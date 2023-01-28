@@ -1,13 +1,10 @@
-sensor.yr_symbol:
-  friendly_name: "yr.no"
-
 sensor.151_humidity:
   friendly_name: Köket luftfuktighet
 sensor.151_temperature:
   friendly_name: Köket
 sensor.152_temperature:
   friendly_name: Balkongen
-  
+
 media_player.nedervaningen:
   icon: mdi:google-home
   friendly_name: Google Home mini
@@ -36,18 +33,6 @@ sensor.disk_use_percent:
 sensor.memory_use_percent:
   friendly_name: memory
 sensor.load_1m:
-  unit_of_measurement: UnitInterval  
+  unit_of_measurement: UnitInterval
 sensor.load_5m:
   unit_of_measurement: UnitInterval
-
-
-switch.nexa_uttag_1:
-  friendly_name: Fönsterlampa barnrum
-switch.nexa_uttag_3:
-  friendly_name: Fönsterlampa kök
-switch.telldus_uttag_1:
-  friendly_name: Lampslinga TV
-switch.telldus_uttag_2:
-  friendly_name: Aplampa
-switch.telldus_uttag_3:
-  friendly_name: Golvlampa garnhörnan

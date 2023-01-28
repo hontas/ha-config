@@ -221,10 +221,6 @@ views:
         title: Living Room
       - type: media-control
         entity: media_player.living_room
-      - type: entities
-        entities:
-          - light.e27_rgb_1
-        title: Lous rum
       - type: media-control
         entity: media_player.lous_rum
       - type: media-control

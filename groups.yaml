@@ -1,16 +1,14 @@
 default_view:
   icon: mdi:home
   entities:
-    - sensor.yr_symbol
     - zone.home
-    - updater.updater
     - group.temperature
     - group.kitchen
     - group.laundry
     - group.guestroom
     - device_tracker.pontuss_iphone
     - device_tracker.johannas_iphone_2
-    
+
 kitchen:
   name: Kök
   entities:
@@ -20,7 +18,7 @@ kitchen:
     - sensor.pressure_8
     - sensor.aqara_temp_2_battery_level
     - sensor.water_16_battery_level
-    
+
 laundry:
   name: Tvättstuga
   entities:
@@ -30,7 +28,7 @@ laundry:
     - sensor.pressure_15
     - sensor.laundry_battery_level
     - sensor.water_9_battery_level
-    
+
 guestroom:
   name: Gästrum
   entities:
@@ -56,7 +54,7 @@ humidity:
     - sensor.humidity_7
     - sensor.humidity_11
     - sensor.humidity_14
-    
+
 pressure:
   name: Lufttryck
   icon: mdi:pressure
@@ -69,45 +67,23 @@ pressure:
 Lights:
   icon: mdi:lightbulb
   entities:
-    - switch.0b11000000362c8601040f50
-    - switch.balkongdorr
-    - switch.bokhyllsbelysning_lous_rum
-    - switch.fonsterlampa_sovrum
-    - switch.fonsterlampa_vardagsrum
-    - switch.hangande_lampa_lous_rum
-    - switch.lampslinga_lous_rum
-    - switch.lampslinga_trappa
     - switch.magnetsensor_1
     - switch.magnetsensor_ytterdorr
-    - switch.nexa_uttag_1
-    - switch.nexa_uttag_2
-    - switch.nexa_uttag_3
-    - switch.nexa_uttag_4
-    - switch.proove_uttag_1
-    - switch.proove_uttag_2
-    - switch.proove_uttag_3
-    - switch.telldus_uttag_1
-    - switch.telldus_uttag_2
-    - switch.telldus_uttag_3
     - switch.utebelysning
-    - switch.utebelysning_2
-    - switch.utebelysning_slingor
-    - switch.vaxtbelysning_gastrum
-    - switch.vaxtbelysning_upp
     - light.deconz_lights
     - light.e14_1
     - light.e27_rgb_1
-    - light.mancav
 
 Cozylights:
   icon: mdi:lightbulb-auto
   name: Mysbelysning
   entities:
-    - switch.nexa_uttag_1
-    - switch.nexa_uttag_3
-    - switch.telldus_uttag_1
-    - switch.telldus_uttag_2
-    - switch.telldus_uttag_3
+    - switch.ac_00186b4_1
+    - switch.ac_0030e6c_3
+    - switch.ac_00186c1_2
+    - switch.ac_00186aa_1
+    - switch.ac_0030d40_1
+    - switch.ac_0030e08_2
 
 Speakers:
   icon: mdi:speaker
@@ -121,7 +97,6 @@ Speakers:
 Media:
   icon: mdi:television
   entities:
-    - media_player.apple_tv
     - remote.apple_tv
     - media_player.vardagsrum
 
@@ -145,10 +120,8 @@ System_status:
   entities:
     - sensor.disk_free
     - sensor.memory_free
-    - sensor.processor_use
     - sensor.load_1m
     - sensor.load_5m
-    - sensor.processor_use
     - sensor.last_boot
 
 Automations:
@@ -166,20 +139,21 @@ Automations:
     - automation.sovrumsbelysning_av_kvall
     - automation.vaxtbelysning_av
     - automation.vaxtbelysning_av_sovrum
-    - automation.vaxtbelysning_p
 
 Devices:
   icon: mdi:account-multiple
   entities:
     - device_tracker.johannas_iphone_2
     - device_tracker.pontuss_iphone
-    - sensor.geocoded_location
-    - sensor.geocoded_location_2
-    - sensor.sim_1
-    - sensor.sim_1_2
-    - sensor.connection_type
-    - sensor.connection_type_2
-    - sensor.battery_level
-    - sensor.battery_level_2
-    - sensor.battery_state
-    - sensor.battery_state_2
+    
+Verisure:
+  icon: mdi:home-lock
+  entities:
+    - binary_sensor.entredorr
+    - binary_sensor.fonster_hall_hoger
+    - binary_sensor.fonster_kok_4_fr_vanster
+    - binary_sensor.groventre_tvattstuga
+    - binary_sensor.fonster_hall_vanster
+    - binary_sensor.fonster_kok_1_fr_vanster
+    - binary_sensor.fonster_kok_2_fr_vanster
+    - binary_sensor.fonster_kok_3_fr_vanster

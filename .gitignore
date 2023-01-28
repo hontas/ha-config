@@ -11,3 +11,9 @@ node-red
 www
 known_devices.yaml
 id_rsa
+blueprints/
+custom_components/
+node-red/
+image/
+wyze-bridge/
+.lundin.pontus@gmail.com.august.conf

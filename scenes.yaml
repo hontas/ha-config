@@ -1,47 +1,36 @@
-- id: '1579474924530'
+- id: "1579474924530"
   name: Everything off
   entities:
     group.bedroom:
       assumed_state: true
       entity_id:
-      - switch.telldus_uttag_3
-      - light.e14_1
+        - switch.telldus_uttag_3
+        - light.e14_1
       friendly_name: Sovrum
       order: 1
-      state: 'off'
-    group.lights_cozy:
-      assumed_state: true
-      entity_id:
-      - switch.lampslinga_trappa
-      - switch.fonsterlampa_vardagsrum
-      friendly_name: Mysbelysning
-      order: 2
-      state: 'off'
+      state: "off"
     group.lights_other:
       assumed_state: true
       entity_id:
-      - switch.utebelysning
-      - switch.utebelysning_slingor
-      - light.mancave
+        - switch.utebelysning
+        - switch.utebelysning_slingor
+        - light.mancave
       friendly_name: Övrig belysning
       order: 4
-      state: 'on'
+      state: "on"
     group.lights_plant:
       assumed_state: true
       entity_id:
-      - switch.vaxtbelysning_gastrum
-      - switch.vaxtbelysning_uppe
-      - switch.telldus_uttag_2
+        - switch.vaxtbelysning_gastrum
+        - switch.vaxtbelysning_uppe
+        - switch.telldus_uttag_2
       friendly_name: Växtbelysning
       order: 3
-      state: 'off'
+      state: "off"
     group.lous_room:
       assumed_state: true
       entity_id:
-      - switch.lampslinga_lous_rum
-      - switch.hangande_lampa_lous_rum
-      - switch.bokhyllsbelysning_lous_rum
-      - light.e27_rgb_1
+        - light.e27_rgb_1
       friendly_name: Lous rum
       order: 0
-      state: 'on'
+      state: "on"

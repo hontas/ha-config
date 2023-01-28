@@ -11,162 +11,32 @@
       message: Last person ({{ trigger.event.data.person }}) left {{ trigger.event.data.place
         }} at {{ trigger.event.data.leftAt }}
     service: notify.pushbullet
-- id: '1541124393678'
-  alias: Växtbelysning på
-  trigger:
-  - at: 09:00
-    platform: time
-  condition: []
-  action:
-  - data:
-      entity_id: group.lights_plant
-    service: homeassistant.turn_on
-- id: '1541124461599'
-  alias: Växtbelysning av
-  trigger:
-  - at: '21:00'
-    platform: time
-  condition: []
-  action:
-  - data:
-      entity_id: group.lights_plant
-    service: homeassistant.turn_off
 - id: '1541124563664'
-  alias: Mysbelysning på vardagar
+  alias: Mysbelysning på
   trigger:
-  - at: '18:00'
-    platform: time
-  - platform: webhook
-    webhook_id: ''
   - event: sunset
     platform: sun
-  condition:
-  - condition: time
-    weekday:
-    - mon
-    - tue
-    - wed
-    - thu
-    - fri
+    offset: -01:00:00
+  condition: []
   action:
-  - data:
-      entity_id:
-      - group.lights_cozy
-      - group.lous_room
-      - group.bedroom
+  - data: {}
     service: homeassistant.turn_on
+    target:
+      entity_id:
+      - group.cozylights
 - id: '1541124626229'
-  alias: Mysbelysning av morgon
+  alias: Mysbelysning av
   trigger:
-  - at: 09:00
-    platform: time
+  - platform: sun
+    event: sunrise
+    offset: 01:00:00
   condition: []
   action:
-  - data:
-      entity_id: group.lights_cozy
+  - data: {}
     service: homeassistant.turn_off
-- id: '1541125546947'
-  alias: Skymning
-  trigger:
-  - event: sunset
-    offset: -01:00
-    platform: sun
-  condition: []
-  action:
-  - data:
+    target:
       entity_id:
-      - switch.utebelysning_slingor
-      - switch.utebelysning
-      - light.e27_rgb_1
-    service: homeassistant.turn_on
-- id: '1541125632471'
-  alias: Gryning
-  trigger:
-  - event: sunrise
-    offset: 01:00
-    platform: sun
-  condition: []
-  action:
-  - data:
-      entity_id:
-      - switch.utebelysning_slingor
-      - light.e27_rgb_1
-    service: homeassistant.turn_off
-- id: '1543184383447'
-  alias: Mysbelysning av kväll
-  trigger:
-  - at: '23:00'
-    platform: time
-  condition: []
-  action:
-  - data:
-      entity_id:
-      - group.lights_cozy
-    service: homeassistant.turn_off
-- id: '1547240366935'
-  alias: Mysbelysning på helg
-  trigger:
-  - at: '18:00'
-    platform: time
-  - event: sunset
-    platform: sun
-  condition:
-  - condition: time
-    weekday:
-    - sat
-    - sun
-  action:
-  - data:
-      entity_id:
-      - group.lights_cozy
-      - group.lous_room
-    service: homeassistant.turn_on
-- id: '1553812844043'
-  alias: Växtbelysning av sovrum
-  trigger:
-  - at: '21:00'
-    platform: time
-  condition: []
-  action:
-  - data:
-      entity_id:
-      - switch.vaxtbelysning_gastrum
-    service: switch.turn_off
-- id: '1567458571893'
-  alias: Sovrumsbelysning av kväll
-  trigger:
-  - at: '21:00'
-    platform: time
-  condition: []
-  action:
-  - data:
-      entityId:
-      - switch.telldus_uttag_3
-    service: homeassistant.turn_off
-- id: '1574199594593'
-  alias: Mysbelysning på morgon
-  description: ''
-  trigger:
-  - at: 07:00
-    platform: time
-  condition: []
-  action:
-  - data:
-      entity_id:
-      - group.lights_cozy
-    service: homeassistant.turn_on
-- id: '1576104976869'
-  alias: Julstjärna på
-  description: ''
-  trigger:
-  - at: 09:00
-    platform: time
-  condition: []
-  action:
-  - data:
-      entity_id:
-      - light.rgb_1
-    service: homeassistant.turn_on
+      - group.cozylights
 - id: '1642165706290'
   alias: Washing machine done
   description: Power consumption goes to 0 W
@@ -192,23 +62,6 @@
       title: Tvättmaskinen
       message: Tvätten är klar!
   mode: single
-- id: '1642357357162'
-  alias: Washing machine started
-  description: Power consumption goes to above 10 W
-  trigger:
-  - type: power
-    platform: device
-    device_id: 4d210c770658401562a4feb5d891e328
-    entity_id: sensor.washing_machine_power_2
-    domain: sensor
-    above: 3
-  condition: []
-  action:
-  - service: notify.mobile_app_pontuss_iphone
-    data:
-      message: Ny tvätt startad!
-      title: Tvättmaskinen
-  mode: single
 - id: '1642357497714'
   alias: Dryer program complete
   description: When dryer power goes below x W
@@ -229,23 +82,6 @@
     data:
       title: Torktumlaren
       message: Torkprogrammet är klart!
-  mode: single
-- id: '1642357535328'
-  alias: Dryer program started
-  description: When dryer power goes above 3 W
-  trigger:
-  - type: power
-    platform: device
-    device_id: 5019d8a8f5df0a5cdb2d08b62f450136
-    entity_id: sensor.dryer_power
-    domain: sensor
-    above: 3
-  condition: []
-  action:
-  - service: notify.mobile_app_pontuss_iphone
-    data:
-      title: Torktumlaren
-      message: Nytt torkprogram startat!
   mode: single
 - id: '1642367789452'
   alias: Elcykel starta laddning
@@ -353,4 +189,19 @@
     data: {}
     target:
       device_id: cce3c41b5bba14ed6bda12b2248c7c08
+  mode: single
+- id: '1668250384356'
+  alias: on startup
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - service: homeassistant.turn_on
+    data: {}
+    target:
+      entity_id:
+      - switch.washing_machine
+      - switch.dryer
   mode: single
