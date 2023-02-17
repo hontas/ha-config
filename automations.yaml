@@ -205,3 +205,19 @@
       - switch.washing_machine
       - switch.dryer
   mode: single
+- id: '1675598519207'
+  alias: Toggle Hat lamp
+  description: In kids room
+  trigger:
+  - device_id: 0af7f91e25f45c60687aa41c7ec4bc5e
+    domain: deconz
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_on
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.ac_0030e08_2
+  mode: single
