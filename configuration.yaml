@@ -10,8 +10,14 @@ homeassistant:
 default_config:
 
 http:
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.30.33.0/24
+    - 172.17.232.0/24
+    - 192.168.1.0/24
+    - 127.0.0.1
 
 discovery:
 
@@ -58,11 +64,25 @@ rfxtrx:
 
 # Tellstick DUO
 tellstick:
-  host: core-tellstick
+  host: local-tellstick
   signal_repetitions: 3
   port: [50800, 50801]
 
 sensor:
+  # växelriktare boningshus
+  - platform: huawei_solar
+    host: "192.168.1.116"
+    #optimizers: true
+    #battery: true
+    slave: 1
+    #port: 6607
+  # växelriktare garage
+  - platform: huawei_solar
+    host: "192.168.1.115"
+    #optimizers: true
+    #battery: true
+    slave: 1
+    #port: 6607
   - platform: tellstick
     temperature_scale: "°C"
   #    only_named:
